@@ -30,6 +30,11 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
+def feed
+    # このコードは準備段階です。
+    # 完全な実装は第11章「ユーザーをフォローする」を参照してください。
+    Micropost.from_users_followed_by(self)
+  end
 
 
   private
@@ -38,10 +43,6 @@ class User < ActiveRecord::Base
 	  self.remember_token = User.encrypt(User.new_remember_token)
 	end
 
-  def feed
-    # このコードは準備段階です。
-    # 完全な実装は第11章「ユーザーをフォローする」を参照してください。
-    Micropost.from_users_followed_by(self)
-  end
+  
   
 end
